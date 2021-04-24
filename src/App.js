@@ -95,7 +95,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<User posts={posts} onDelete={deletePosts} />
+			<User posts={posts} />
 		</div>
 	);
 }

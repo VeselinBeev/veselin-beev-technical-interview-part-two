@@ -167,7 +167,7 @@ html[xmlns] .clearfix {
 * html .clearfix {
 	height: 1%;
 }
-.single-post {
+.post {
 	border: 1px solid red;
 	margin-bottom: 20px;
 }

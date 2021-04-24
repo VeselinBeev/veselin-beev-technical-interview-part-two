@@ -1,10 +1,14 @@
 import React from "react";
-import Button from "./Button";
 
 const Post = ({ post }) => {
 	return (
 		<div className="post">
 			<ul>
+				<li>
+					<h2>
+						User Id: <span>{post.userId}</span>
+					</h2>
+				</li>
 				<li>
 					<h2>Title</h2>
 					{post.title}
@@ -14,7 +18,6 @@ const Post = ({ post }) => {
 					{post.body}
 				</li>
 			</ul>
-			<Button title={"Delete Post"} />
 		</div>
 	);
 };

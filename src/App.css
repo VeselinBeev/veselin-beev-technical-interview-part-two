@@ -177,7 +177,7 @@ html[xmlns] .clearfix {
 	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
-	width: calc(50% - 22px);
+	width: 100%;
 	background-color: #fff;
 	margin: 10px;
 }

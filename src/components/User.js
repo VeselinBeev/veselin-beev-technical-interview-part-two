@@ -1,11 +1,20 @@
-// import PropTypes from "prop-types";
 import Button from "./Button";
 import Post from "./Post";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getPosts } from "../actions/postActions";
 
-const User = ({ user, posts }) => {
+const User = ({ user, post: { posts }, getPosts }) => {
+	useEffect(() => {
+		getPosts();
+		// eslint-disable-next-line
+	}, []);
+	if (posts === null) {
+		return <h2>Loading</h2>;
+	}
+
 	const onGetUsersPosts = () => {
 		// function for get user posts
-		console.log("click" + user.id);
 	};
 	// const filterById = posts
 	// .filter((post) => post.userId === user.id)
@@ -36,4 +45,12 @@ const User = ({ user, posts }) => {
 	);
 };
 
-export default User;
+
+const mapStateToProps = state => ({
+	post: state.post
+});
+
+export default connect(
+	mapStateToProps,
+	{ getPosts }
+)(User);

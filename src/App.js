@@ -16,8 +16,13 @@ function App() {
 		};
 		getUsers();
 
+		// const getPosts = async () => {
+		// 	const postsFromServer = await fetchPosts();
+		// 	setPosts(postsFromServer);
+		// };
+		// getPosts();
 		const getPosts = async () => {
-			const postsFromServer = await fetchPosts();
+			const postsFromServer = await fetchPostsByUserId(posts.userId);
 			setPosts(postsFromServer);
 		};
 		getPosts();
@@ -55,8 +60,7 @@ function App() {
 	return (
 		<Provider store={store}>
 			<div className="App">
-				<Users users={users} />
-				<Posts posts={posts} />
+				<Users users={users} posts={posts} />
 			</div>
 		</Provider>
 	);

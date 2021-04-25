@@ -167,7 +167,46 @@ html[xmlns] .clearfix {
 * html .clearfix {
 	height: 1%;
 }
-.post {
-	border: 1px solid red;
-	margin-bottom: 20px;
+
+.posts-wrapper {
+	display: flex;
+	flex-wrap: wrap;
 }
+.post {
+	border: 1px solid #a5a5a5;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	width: calc(50% - 22px);
+	background-color: #fff;
+	margin: 10px;
+}
+.accordion-toggle.active,
+.accordion-toggle:hover {
+}
+.accordion-toggle {
+	display: block;
+	color: #444;
+	cursor: pointer;
+	padding: 15px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
+	transition: 0.4s;
+}
+.accordion-content.active {
+}
+.accordion-content {
+	padding: 15px;
+	display: none;
+	overflow: hidden;
+}
+
+.accordion-content.active {
+	display: block;
+}
+/* .display-none {
+	display: none;
+} */

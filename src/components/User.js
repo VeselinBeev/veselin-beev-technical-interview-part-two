@@ -1,14 +1,19 @@
 // import PropTypes from "prop-types";
 import Button from "./Button";
-import Posts from "./Posts";
+import Post from "./Post";
 
-const User = ({ user }) => {
-	const onClick = () => {
+const User = ({ user, posts }) => {
+	const onGetUsersPosts = () => {
+		// function for get user posts
 		console.log("click" + user.id);
 	};
+	// const filterById = posts
+	// .filter((post) => post.userId === user.id)
+	// .map((post) => <Post key={post.userId} post={post} />);
 	return (
 		<div className="user">
 			<ul>
+				<li>{user.id}</li>
 				<li>{user.name}</li>
 				<li>{user.username}</li>
 				<li>{user.email}</li>
@@ -18,7 +23,15 @@ const User = ({ user }) => {
 				<li>{user.phone}</li>
 				<li>{user.website}</li>
 			</ul>
-			<Button title={"Get user’s posts"} onClick={onClick} />
+			<Button title={"Get user’s posts"} onClick={onGetUsersPosts} />
+			<h2>My Posts</h2>
+			<section className="posts-wrapper display-none">
+				{posts
+					.filter((post) => post.userId === user.id)
+					.map((post) => (
+						<Post key={post.id} post={post} />
+					))}
+			</section>
 		</div>
 	);
 };

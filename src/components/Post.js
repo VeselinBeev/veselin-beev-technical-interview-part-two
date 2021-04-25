@@ -2,23 +2,29 @@ import React from "react";
 
 const Post = ({ post }) => {
 	return (
-		<div className="post">
-			<ul>
-				<li>
-					<h2>
-						User Id: <span>{post.userId}</span>
-					</h2>
-				</li>
-				<li>
-					<h2>Title</h2>
-					{post.title}
-				</li>
-				<li>
-					<h2>Body</h2>
+		<article className="post accordion">
+			<button id={"accordion-" + post.id} className="accordion-toggle">
+				<strong>
+					User ID:<span>{post.userId}</span>
+				</strong>
+				<br />
+				<span>Title: {post.title}</span>
+			</button>
+			<div
+				className="accordion-content active"
+				id={"accordion-" + post.id}
+			>
+				<br />
+				<strong>
+					PostID: <span>{post.id}</span>
+				</strong>
+				<p>
+					<strong>Body</strong>
+					<br />
 					{post.body}
-				</li>
-			</ul>
-		</div>
+				</p>
+			</div>
+		</article>
 	);
 };
 

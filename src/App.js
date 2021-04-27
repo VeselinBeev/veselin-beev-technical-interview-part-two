@@ -1,9 +1,10 @@
-import "./App.css";
-import Users from "./components/Users";
-import { Provider } from "react-redux";
-import store from "./store";
+import React from 'react';
+import Users from './components/Users';
+import { Provider } from 'react-redux';
+import store from './store';
+import './App.css';
 
-function App() {
+const App = () => {
 	// Ако искаме да използваме това инфо в други компоненти, ще трябва да използваме Redux- който е store за сега го слага това в App.js
 	// const [users] = useState([]);
 	// const [posts, setPosts] = useState([]);
@@ -49,7 +50,7 @@ function App() {
 			<Users />
 		</Provider>
 	);
-}
+};
 
 // Users.propTypes = {
 // 	user: PropTypes.object.isRequired,

@@ -1,107 +1,66 @@
-import Button from "./Button";
-import Post from "./Post";
-import React, { useState, useEffect } from 'react';
+
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getPosts } from "../actions/postActions";
-import { updateUser } from "../actions/userActions";
-
-const User = ({ user, post: { posts }, getPosts }) => {
-	const [name, setName] = useState('');
-	const [username, setUsername] = useState('');
-	const [email, setEmail] = useState('');
-	const [street, setStreet] = useState('');
-	const [suite, setSuite] = useState('');
-	const [city, setCity] = useState('');
-	const [phone, setPhone] = useState('');
-	const [website, setWebsite] = useState('');
-	// const [tech, setTech] = useState('');
-
-	useEffect((user) => {
-		// setName(user.name);
+import PropTypes from 'prop-types';
+import { setCurrent } from '../actions/userActions';
+import { getPosts } from '../actions/postActions';
+import Post from './Post';
+const User = ({ user, setCurrent, post: { posts }, getPosts }) => {
+	useEffect(() => {
 		getPosts();
 		// eslint-disable-next-line
-	}, [user]);
-	if (posts === null) {
-		return <h2>Loading</h2>;
-	}
+	}, []);
 
-	const onSubmit = () => {
-		const updUser = {
-			id: user.id,
-			name,
-			username,
-			email,
-			street,
-			suite,
-			city,
-			phone,
-			website
-		};
-		updateUser(updUser);
 
-		// Clear Fields
-		setName('');
-		setUsername('');
-		setEmail('');
-		setStreet('');
-		setSuite('');
-		setCity('');
-		setPhone('');
-		setWebsite('');
-	};
-
-	const onGetUsersPosts = () => {
-		// function for get user posts
-	};
 	return (
-		<div className="user">
-			<label>
+		<ul className={'user'}>
+			<li>
 				<strong>Name: </strong>
-				<input type='text' name='name' value={user.name} onChange={e => setName(e.target.value)} />
-			</label>
-			<label>
+				<span>{user.name}</span>
+			</li>
+			<li>
 				<strong>Username: </strong>
-				<input type='text' name='name' value={user.username} onChange={e => setUsername(e.target.value)} />
-			</label>
-			<label>
+				<span>{user.username}</span>
+			</li>
+			<li>
 				<strong>Email: </strong>
-				<input type='text' name='name' value={user.email} onChange={e => setEmail(e.target.value)} />
-			</label>
-			<label>
+				<span>{user.email}</span>
+			</li>
+			{/*<li>
 				<strong>Street: </strong>
-				<input type='text' name='name' value={user.address.street} onChange={e => setStreet(e.target.value)} />
-			</label>
-			<label>
+				<span>{user.address.street}</span>
+			</li>
+			<li>
 				<strong>Suite: </strong>
-				<input type='text' name='name' value={user.address.suite} onChange={e => setSuite(e.target.value)} />
-			</label>
-			<label>
+				<span>{user.address.suite}</span>
+			</li>
+			<li>
 				<strong>City: </strong>
-				<input type='text' name='name' value={user.address.city} onChange={e => setCity(e.target.value)} />
-			</label>
-			<label>
+				<span>{user.address.city}</span>
+			</li>*/}
+			<li>
 				<strong>Phone: </strong>
-				<input type='text' name='name' value={user.phone} onChange={e => setPhone(e.target.value)} />
-			</label>
-			<label>
+				<span>{user.phone}</span>
+			</li>
+			<li>
 				<strong>Website: </strong>
-				<input type='text' name='name' value={user.website} onChange={e => setWebsite(e.target.value)} />
-			</label>
-			<Button title={"Submit"} onClick={onSubmit} />
-			<Button title={"Get user’s posts"} onClick={onGetUsersPosts} />
-			<hr />
+				<span>{user.website}</span>
+			</li>
+			<button className="btn" onClick={() => setCurrent(user)} >Select user</button>
 			<h2>My Posts</h2>
 			<section className="posts-wrapper display-none">
-				{posts
-					.filter((post) => post.userId === user.id)
-					.map((post) => (
-						<Post key={post.id} post={post} />
-					))}
+				{posts.filter((post) => post.userId === user.id).map((post => <Post key={post.id} post={post} />))}
 			</section>
-		</div>
-	);
+		</ul>
+	)
 };
 
+
+User.propTypes = {
+	setCurrent: PropTypes.func.isRequired,
+	post: PropTypes.object.isRequired,
+	getPosts: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
 	post: state.post
@@ -109,5 +68,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ getPosts, updateUser }
+	{ setCurrent, getPosts }
 )(User);

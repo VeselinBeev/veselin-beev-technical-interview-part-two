@@ -1,17 +1,26 @@
-import { GET_USERS, SET_LOADING, USERS_ERROR, UPDATE_USER } from "./../actions/types";
+import {
+	GET_USERS,
+	SET_LOADING,
+	SET_CURRENT,
+	CLEAR_CURRENT,
+	UPDATE_USER,
+	USERS_ERROR
+} from '../actions/types';
 
 const initialState = {
 	users: null,
+	current: null,
 	loading: false,
-	error: null,
+	error: null
 };
+
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case GET_USERS:
 			return {
 				...state,
 				users: action.payload,
-				loading: false,
+				loading: false
 			};
 		case UPDATE_USER:
 			return {
@@ -20,16 +29,26 @@ export default (state = initialState, action) => {
 					user.id === action.payload.id ? action.payload : user
 				)
 			};
+		case SET_CURRENT:
+			return {
+				...state,
+				current: action.payload
+			};
+		case CLEAR_CURRENT:
+			return {
+				...state,
+				current: null
+			};
 		case SET_LOADING:
 			return {
 				...state,
-				loading: true,
+				loading: true
 			};
 		case USERS_ERROR:
-			console.log(action.payload);
+			console.error(action.payload);
 			return {
 				...state,
-				error: action.payload,
+				error: action.payload
 			};
 		default:
 			return state;

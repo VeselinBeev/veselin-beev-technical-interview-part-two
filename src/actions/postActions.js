@@ -1,4 +1,4 @@
-import { SET_LOADING, USERS_ERROR, GET_POSTS } from "./types";
+import { SET_LOADING, GET_POSTS, USERS_ERROR } from "./types";
 
 // Get posts form the server
 export const getPosts = () => async (dispatch) => {
@@ -17,6 +17,7 @@ export const getPosts = () => async (dispatch) => {
 		});
 	}
 };
+
 
 // SET loaging to true
 export const setLoading = () => {

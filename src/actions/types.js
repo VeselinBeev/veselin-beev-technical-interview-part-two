@@ -1,5 +1,9 @@
+export const GET_USERS = 'GET_USERS';
 export const GET_POSTS = "GET_POSTS";
-export const GET_USERS = "GET_USERS";
-export const UPDATE_USER = "UPDATE_USER";
-export const USERS_ERROR = "USERS_ERROR";
-export const SET_LOADING = " SET_LOADING";
+export const UPDATE_USER = 'UPDATE_USER';
+export const SET_CURRENT = 'SET_CURRENT';
+export const SET_LOADING = 'SET_LOADING';
+export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+export const CLEAR_USERS = 'CLEAR_USERS';
+export const USERS_ERROR = 'USERS_ERROR';
+export const POSTS_ERROR = 'POSTS_ERROR';

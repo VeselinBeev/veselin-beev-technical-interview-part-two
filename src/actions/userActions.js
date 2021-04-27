@@ -1,28 +1,40 @@
-import { GET_USERS, SET_LOADING, USERS_ERROR, GET_POSTS, UPDATE_USER } from "./types";
+import {
+	SET_LOADING,
+	SET_CURRENT,
+	CLEAR_CURRENT,
+	GET_USERS,
+	USERS_ERROR,
+	UPDATE_USER
+} from './types';
 
-// Get users form the server
-export const getUsers = () => async (dispatch) => {
+
+// Get Users from server
+export const getUsers = () => async dispatch => {
 	try {
 		setLoading();
-		const res = await fetch("https://jsonplaceholder.typicode.com/users");
+
+		const res = await fetch('https://jsonplaceholder.typicode.com/users');
 		const data = await res.json();
+
 		dispatch({
 			type: GET_USERS,
-			payload: data,
+			payload: data
 		});
-	} catch (error) {
+	} catch (err) {
 		dispatch({
 			type: USERS_ERROR,
-			payload: error.response.data,
+			payload: err.response.statusText
 		});
 	}
 };
 
+
 // Update User on server
 export const updateUser = user => async dispatch => {
 	try {
+		setLoading();
 
-		const res = await fetch(`https://jsonplaceholder.typicode.com/users${user.id}`, {
+		const res = await fetch(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
 			method: 'PUT',
 			body: JSON.stringify(user),
 			headers: {
@@ -36,36 +48,32 @@ export const updateUser = user => async dispatch => {
 			type: UPDATE_USER,
 			payload: data
 		});
-	} catch (error) {
+	} catch (err) {
 		dispatch({
 			type: USERS_ERROR,
-			payload: error.response.data
+			payload: err.response.statusText
 		});
 	}
 };
 
-
-// Get posts form the server
-export const getPosts = () => async (dispatch) => {
-	try {
-		setLoading();
-		const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-		const data = await res.json();
-		dispatch({
-			type: GET_POSTS,
-			payload: data,
-		});
-	} catch (error) {
-		dispatch({
-			type: USERS_ERROR,
-			payload: error.response.data,
-		});
-	}
+// Set current user
+export const setCurrent = user => {
+	return {
+		type: SET_CURRENT,
+		payload: user
+	};
 };
 
-// SET loaging to true
+// Clear current user
+export const clearCurrent = () => {
+	return {
+		type: CLEAR_CURRENT
+	};
+};
+
+// Set loading to true
 export const setLoading = () => {
 	return {
-		type: SET_LOADING,
+		type: SET_LOADING
 	};
 };

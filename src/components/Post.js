@@ -14,13 +14,11 @@ const Post = ({ post }) => {
 				className="accordion-content active"
 				id={"accordion-" + post.id}
 			>
-				<br />
 				<strong>
 					PostID: <span>{post.id}</span>
 				</strong>
 				<p>
 					<strong>Body</strong>
-					<br />
 					{post.body}
 				</p>
 			</div>

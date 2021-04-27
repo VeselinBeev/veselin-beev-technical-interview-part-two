@@ -1,16 +1,10 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setCurrent } from '../actions/userActions';
-import { getPosts } from '../actions/postActions';
 import Post from './Post';
-const User = ({ user, setCurrent, post: { posts }, getPosts }) => {
-	useEffect(() => {
-		getPosts();
-		// eslint-disable-next-line
-	}, []);
-
+const User = ({ user, setCurrent, post: { posts } }) => {
 
 	return (
 		<ul className={'user'}>
@@ -37,7 +31,7 @@ const User = ({ user, setCurrent, post: { posts }, getPosts }) => {
 			<li>
 				<strong>City: </strong>
 				<span>{user.address.city}</span>
-			</li>{/**/}
+			</li>
 			<li>
 				<strong>Phone: </strong>
 				<span>{user.phone}</span>
@@ -59,7 +53,6 @@ const User = ({ user, setCurrent, post: { posts }, getPosts }) => {
 User.propTypes = {
 	setCurrent: PropTypes.func.isRequired,
 	post: PropTypes.object.isRequired,
-	getPosts: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -68,5 +61,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ setCurrent, getPosts }
+	{ setCurrent }
 )(User);

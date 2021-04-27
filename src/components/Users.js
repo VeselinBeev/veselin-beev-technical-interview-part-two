@@ -27,11 +27,6 @@ const Users = ({ user: { users, loading }, getUsers, post: { posts }, getPosts }
 			</aside>
 			<section>
 				{!loading && users.length === 0 ? (<p className='center'>No Users found</p>) : (users.map(user => <User user={user} key={user.id} />))}
-				<h2>My Posts</h2>
-				<section className="posts-wrapper display-none">
-					{posts.filter((post) => post.userId === post.id).map((post => <Post key={post.id} post={post} />))}
-
-				</section>
 			</section>
 		</main>
 	);

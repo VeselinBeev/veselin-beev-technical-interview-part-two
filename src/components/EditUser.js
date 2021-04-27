@@ -6,9 +6,9 @@ const EditUser = ({ current, updateUser }) => {
 	const [name, setName] = useState('');
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
-	// const [street, setAddressStreet] = useState('');
-	// const [suite, setAddressSuite] = useState('');
-	// const [city, setAddressCity] = useState('');
+	const [street, setAddressStreet] = useState('');
+	const [suite, setAddressSuite] = useState('');
+	const [city, setAddressCity] = useState('');
 	const [phone, setPhone] = useState('');
 	const [website, setWebsite] = useState('');
 
@@ -17,9 +17,9 @@ const EditUser = ({ current, updateUser }) => {
 			setName(current.name);
 			setUsername(current.username);
 			setEmail(current.email);
-			// setAddressStreet(current.address.street);
-			// setAddressSuite(current.address.suite);
-			// setAddressCity(current.address.city);
+			setAddressStreet(current.address.street);
+			setAddressSuite(current.address.suite);
+			setAddressCity(current.address.city);
 			setPhone(current.phone);
 			setWebsite(current.website);
 		}
@@ -32,22 +32,24 @@ const EditUser = ({ current, updateUser }) => {
 			name,
 			username,
 			email,
-			// street,
-			// suite,
-			// city,
+			address: {
+				street: street,
+				suite: suite,
+				city: city
+			},
 			phone,
 			website
 		};
 
 		updateUser(updUser);
 
-		// Clear Fields
+		// Clear Fields after update 
 		setName('');
 		setUsername('');
 		setEmail('');
-		// setAddressStreet('');
-		// setAddressSuite('');
-		// setAddressCity('');
+		setAddressCity('');
+		setAddressStreet('');
+		setAddressSuite('');
 		setPhone('');
 		setWebsite('');
 
@@ -74,7 +76,7 @@ const EditUser = ({ current, updateUser }) => {
 					<strong>Email: </strong>
 					<input type='text' name='email' value={email} onChange={e => setEmail(e.target.value)} />
 				</label>
-				{/* <label>
+				<label>
 					<strong>Street: </strong>
 					<input type='text' name='street' value={street} onChange={e => setAddressStreet(e.target.value)} />
 				</label>
@@ -85,7 +87,7 @@ const EditUser = ({ current, updateUser }) => {
 				<label>
 					<strong>City: </strong>
 					<input type='text' name='city' value={city} onChange={e => setAddressCity(e.target.value)} />
-				</label>  */}
+				</label>
 				<label>
 					<strong>Phone: </strong>
 					<input type='text' name='phone' value={phone} onChange={e => setPhone(e.target.value)} />

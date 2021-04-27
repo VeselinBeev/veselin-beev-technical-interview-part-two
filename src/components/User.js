@@ -26,7 +26,7 @@ const User = ({ user, setCurrent, post: { posts }, getPosts }) => {
 				<strong>Email: </strong>
 				<span>{user.email}</span>
 			</li>
-			{/*<li>
+			<li>
 				<strong>Street: </strong>
 				<span>{user.address.street}</span>
 			</li>
@@ -37,7 +37,7 @@ const User = ({ user, setCurrent, post: { posts }, getPosts }) => {
 			<li>
 				<strong>City: </strong>
 				<span>{user.address.city}</span>
-			</li>*/}
+			</li>{/**/}
 			<li>
 				<strong>Phone: </strong>
 				<span>{user.phone}</span>

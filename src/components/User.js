@@ -1,11 +1,14 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setCurrent } from '../actions/userActions';
 import Post from './Post';
 const User = ({ user, setCurrent, post: { posts } }) => {
-
+	const [togglePosts, setTogglePosts] = useState(false);
+	const toggleClass = () => {
+		setTogglePosts(!togglePosts);
+	};
 	return (
 		<ul className={'user'}>
 			<li>
@@ -41,8 +44,10 @@ const User = ({ user, setCurrent, post: { posts } }) => {
 				<span>{user.website}</span>
 			</li>
 			<button className="btn" onClick={() => setCurrent(user)} >Select user</button>
-			<h2>My Posts</h2>
-			<section className="posts-wrapper display-none">
+			<button className="btn" onClick={toggleClass} >Get user’s posts</button>
+			<section className={togglePosts
+				? 'posts-wrapper active' : 'posts-wrapper'} >
+				<h2>My Posts</h2>
 				{posts.filter((post) => post.userId === user.id).map((post => <Post key={post.id} post={post} />))}
 			</section>
 		</ul>

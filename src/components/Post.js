@@ -10,17 +10,9 @@ const Post = ({ post }) => {
 				<br />
 				<span>Title: {post.title}</span>
 			</button>
-			<div
-				className="accordion-content active"
-				id={"accordion-" + post.id}
-			>
-				<strong>
-					PostID: <span>{post.id}</span>
-				</strong>
-				<p>
-					<strong>Body</strong>
-					{post.body}
-				</p>
+			<div className="accordion-content active" id={"accordion-" + post.id} >
+				<strong>Body: </strong>
+				<p>	{post.body}	</p>
 			</div>
 		</article>
 	);

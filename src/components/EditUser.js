@@ -25,6 +25,18 @@ const EditUser = ({ current, updateUser }) => {
 		}
 	}, [current]);
 
+
+	const clearData = () => {
+		setName('');
+		setUsername('');
+		setEmail('');
+		setAddressCity('');
+		setAddressStreet('');
+		setAddressSuite('');
+		setPhone('');
+		setWebsite('');
+	}
+
 	const onSubmit = () => {
 
 		const updUser = {
@@ -44,29 +56,18 @@ const EditUser = ({ current, updateUser }) => {
 		updateUser(updUser);
 
 		// Clear Fields after update 
-		setName('');
-		setUsername('');
-		setEmail('');
-		setAddressCity('');
-		setAddressStreet('');
-		setAddressSuite('');
-		setPhone('');
-		setWebsite('');
+		clearData();
 
 	};
+
 
 	return (
 		<>
 			<div className="user">
-				<h2>Selected user to populate data</h2>
+				<h2>Selected user to populated data</h2>
 				<label>
 					<strong>Name: </strong>
-					<input
-						type='text'
-						name='name'
-						value={name}
-						onChange={e => setName(e.target.value)}
-					/>
+					<input type='text' name='name' value={name} onChange={e => setName(e.target.value)} />
 				</label>
 				<label>
 					<strong>Username: </strong>
@@ -97,7 +98,6 @@ const EditUser = ({ current, updateUser }) => {
 					<input type='text' name='website' value={website} onChange={e => setWebsite(e.target.value)} />
 				</label>
 				<button className={'btn'} onClick={onSubmit} >Update selected user</button>
-
 			</div>
 		</>
 	);

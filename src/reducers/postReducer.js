@@ -1,4 +1,4 @@
-import { GET_POSTS, USERS_ERROR } from "./../actions/types";
+import { GET_POSTS, USERS_ERROR, GET_POSTS_BY_ID } from "./../actions/types";
 
 const initialState = {
 	posts: null,
@@ -7,6 +7,12 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case GET_POSTS:
+			return {
+				...state,
+				posts: action.payload,
+			};
+		case GET_POSTS_BY_ID:
+			// TODO get post by userid  use( useSelector )
 			return {
 				...state,
 				posts: action.payload,

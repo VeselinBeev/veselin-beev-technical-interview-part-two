@@ -144,13 +144,16 @@ a img {
 
 aside {
 	width: 30%;
+	position: fixed;
 }
 section {
 	width: 70%;
+	padding-left: 30%;
 }
 main {
 	display: flex;
 	width: auto;
+	position: relative;
 }
 ul {
 	list-style: none;
@@ -209,8 +212,13 @@ input {
 	width: -webkit-fill-available;
 }
 .posts-wrapper {
+	display: none;
+}
+.posts-wrapper.active {
 	display: flex;
 	flex-wrap: wrap;
+	width: 100%;
+	padding-left: 0;
 }
 .post {
 	border: 1px solid #a5a5a5;
